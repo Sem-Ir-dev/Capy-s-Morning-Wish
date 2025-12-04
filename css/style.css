@@ -1,0 +1,162 @@
+/* ==========================
+   Цвета и базовый рендер
+   ========================== */
+:root{
+  --beige:#F7F3E8;       /* основной */
+  --cream:#FFFBF5;       /* фон */
+  --swamp:#6A8D73;       /* акцент */
+  --orange:#F4A261;      /* акцент 2 */
+  --pink:#F9C5C2;        /* акцент 3 */
+  --text:#3E3A34;        /* тёмно-коричневый */
+  --soft-shadow: 0 10px 30px rgba(62,58,52,0.08);
+  --glass: rgba(255,255,255,0.6);
+}
+
+@font-face {
+    font-family: 'GlinaScript';
+    src: url('../fonts/Glina Script em..otf') format('opentype'),
+         url('../fonts/Glina Script em. Thin.otf') format('opentype');
+    font-weight: 400; /* normal */
+    font-style: normal;
+    font-display: swap; /* или block, fallback, optional */
+}
+
+@font-face {
+    font-family: 'babayka';
+    src: url('../fonts/babayka_font.ttf') format('truetype');
+    font-weight: 400; /* normal */
+    font-style: normal;
+    font-display: swap; /* или block, fallback, optional */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg,var(--cream) 0%, #fff 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
+  padding-bottom:120px; /* for footer */
+}
+
+#NAME{font-family: 'GlinaScript', 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; font-size: 45px;}
+
+/* Container */
+.wrap{max-width:1100px;margin:0 auto;padding:28px}
+
+/* ==========================
+   Top floating capybara (corner)
+   ========================== */
+.floating-capy{
+    position:fixed;right:18px;bottom:18px;z-index:1000;cursor:pointer;
+    width:72px;height:72px;border-radius:18px;background:var(--beige);display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--soft-shadow);padding:8px;backdrop-filter: blur(4px);
+    transition:transform .22s ease;
+}
+.floating-capy:active{transform:scale(.96)}
+.capy-emoji{font-size:28px}
+
+/* small toast */
+.toast{position:fixed;right:110px;bottom:34px;background:var(--pink);padding:12px 16px;border-radius:12px;color:var(--text);box-shadow:var(--soft-shadow);opacity:0;transform:translateY(8px);transition:all .32s ease;z-index:1001}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ==========================
+   Hero
+========================== */
+.capy-shef{width: 300px; height: 300px;}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px;border-radius:18px;background:linear-gradient(180deg,var(--beige), rgba(244,162,97,0.02));box-shadow:var(--soft-shadow);margin-top:14px}
+.hero-left{padding:12px}
+h1{font-family:'babayka', 'Quicksand', 'Comic Sans MS', sans-serif;font-size:19px;margin:6px 0 8px}
+h2{font-family: 'babayka'}
+h2.subtitle{font-weight:400;color:rgba(62,58,52,0.8);margin:0 0 18px}
+.cta-row{display:flex;gap:12px;align-items:center}
+.btn{background:var(--swamp);color:#fff;padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700;box-shadow:0 6px 18px rgba(106,141,115,0.18);transition:transform .18s cubic-bezier(.2,.9,.3,1)}
+.btn:hover{transform:translateY(-6px)}
+
+.mini-capy{width: 100px; height: 100px;}
+.capy-men{width: 60px; height: 60px;}
+.desc-food{font-size: 14px;}
+
+/* hero art column */
+.hero-art{display:flex;align-items:center;justify-content:center}
+.card-illustration{background:linear-gradient(180deg,#fff, var(--cream));border-radius:20px;padding:26px;max-width:420px;box-shadow:var(--soft-shadow);position:relative}
+
+    /* simple SVG capybara animation */
+    .capy-svg{width:100%;height:auto;display:block}
+    .capy-wave{animation:float 6s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    .capy-blink{animation:blink 5s step-end infinite}
+    @keyframes blink{0%,94%,100%{opacity:1}95%,99%{opacity:0}}
+
+    /* ==========================
+       Steps
+       ========================== */
+    .steps{display:flex;gap:14px;margin-top:26px}
+    .step{flex:1;background:rgba(255,255,255,0.8);padding:18px;border-radius:12px;text-align:center;box-shadow:0 6px 18px rgba(62,58,52,0.04)}
+    .step-ill{height:88px;display:flex;align-items:center;justify-content:center}
+    .step h3{margin:10px 0 6px;font-size:16px}
+    .muted{color:rgba(62,58,52,0.7);font-size:14px}
+
+    /* ==========================
+       Menu (interactive block)
+       ========================== */
+    .menu{margin-top:32px;padding:18px;border-radius:14px;background:linear-gradient(180deg,#fff, #FEFCF9);box-shadow:var(--soft-shadow)}
+    .menu h2{font-size:22px;margin:0 0 12px}
+    .menu-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+
+    /* 'notebook' style form */
+    .note{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(247,243,232,0.9));
+      border-radius:12px;padding:16px;border:1px dashed rgba(62,58,52,0.06);
+    }
+    label{display:block;font-weight:700;margin:8px 0 6px}
+    input[type=text],textarea,input[type=date]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(62,58,52,0.06);font-size:15px}
+    .radio-row{display:flex;gap:10px;margin-top:8px}
+    .card-option{flex:1;background:linear-gradient(180deg,#fff, #FFFBF5);padding:10px;border-radius:12px;margin-top: 10px;border:1px solid rgba(62,58,52,0.04);cursor:pointer;transition:transform .18s,box-shadow .18s}
+    .card-option:hover{transform:translateY(-6px)}
+    .card-option.active{box-shadow:0 10px 30px rgba(255, 159, 81, 0.12);border:1px solid rgba(244,162,97,0.25);background: linear-gradient(180deg, rgba(206, 255, 204, 0.429), rgba(244,162,97,0.06));}
+    .dish-desc{font-size:14px;padding:8px}
+    .card-option{background: linear-gradient(180deg, rgba(255, 205, 204, 0.384), rgba(244,162,97,0.06));}
+    .card-none{background: none;}
+
+    /* preview column */
+    .preview{background:linear-gradient(180deg,#FFFBF5, #fff);padding:12px;border-radius:12px;border:1px solid rgba(62,58,52,0.03)}
+    .preview h4{margin:6px 0}
+
+    /* ==========================
+       Капи-астролог
+       ========================== */
+    .astro{margin-top:26px;display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .astro .astro-card{padding:18px;background:linear-gradient(180deg,#fff,#FEFCF9);border-radius:12px;box-shadow:var(--soft-shadow)}
+    .quote{font-style:italic;margin-top:8px}
+
+    /* ---------- Footer ---------- */
+    footer{margin-top:38px;text-align:center;padding:28px 12px}
+
+    /* ==========================
+       Modal
+       ========================== */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(62,58,52,0.45);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;pointer-events:none;transition:opacity .22s}
+    .modal-backdrop.show{opacity:1;pointer-events:auto}
+    .modal{background:var(--cream);padding:22px;border-radius:14px;max-width:420px;box-shadow:0 20px 60px rgba(62,58,52,0.3);text-align:center}
+
+/* responsive */
+@media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .menu-grid{grid-template-columns:1fr}
+    .astro{grid-template-columns:1fr}
+    .steps{flex-direction:column}
+}
+
+@media (max-width:500px){
+    .step{width: 250px;}
+    .card-illustration{width: 280px;}
+    .card-illustration img{margin-left: -35px;}
+
+    .note{width: 320px;}
+    #categoryRow{width: 300px;display: flex;flex-wrap: wrap;}
+    #dishesList{width: 300px;display: flex;flex-wrap: wrap;}
+}

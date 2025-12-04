@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Capy's Morning Wish</title>
+  <meta name="description" content="Личный сервис заказа завтрака — милые капибары и утренний уют." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="floating-capy" id="floatingCapy" title="Погладь капибару">
+      <div class="capy-emoji"><img class="capy-men" src="img/capy-btn.png" alt="Капимен"></div>
+    </div>
+    <div class="toast" id="capyToast">*уютное похрюкивание*</div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-left">
+        <p class="muted">Доброе... вернее, добрый вечер!</p>
+        <h1><span id="NAME">Capy's Morning Wish:</span><br/> Секретная кухня капибары</h1>
+        <p class="subtitle">Выбери свой идеальный завтрак вечером, а утром он волшебным образом появится у тебя.</p>
+        <div class="cta-row">
+          <button class="btn" id="toMenuBtn">Выбрать завтрак 🥐</button>
+        </div>
+
+        <!-- Шаги -->
+        <div class="steps" style="margin-top:20px">
+          <div class="step">
+            <div class="step-ill">
+              <!-- moon capy -->
+              <img class="mini-capy" src="img/capy-1.png" alt="Happy Capy!">
+            </div>
+            <h3>Загадай желаемый завтрак</h3>
+            <div class="muted">Напиши, к чему бы хотелось проснуться.</div>
+          </div>
+          <div class="step">
+            <div class="step-ill">
+              <!-- chef capy -->
+              <img class="mini-capy" src="img/capy-2.png" alt="Happy Capy!">
+            </div>
+            <h3>Наш шеф-капибара получит заказ</h3>
+            <div class="muted">Он потирает лапки и включает тихую музыку.</div>
+          </div>
+          <div class="step">
+            <div class="step-ill">
+              <!-- happy capy -->
+              <img class="mini-capy" src="img/capy-3.png" alt="Happy Capy!">
+            </div>
+            <h3>Проснись — завтрак уже ждёт!</h3>
+            <div class="muted">Тёплый хлеб, уют и маленькие объятия.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="card-illustration" role="img" aria-label="Иллюстрация капибары с хлебом">
+          <img class="capy-shef capy-wave" src="img/capy-shef.png" alt="Капи-шеф повар">
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU / ORDER SECTION -->
+    <section class="menu" id="menu">
+      <h2>Что пожелаешь сегодня?</h2>
+      <div class="menu-grid">
+        <div class="note">
+          <form id="orderForm">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" value="Мой лукум ❤️" />
+
+            <label for="date">Дата завтрака</label>
+            <input type="date" id="date" name="date" />
+
+            <label>Выбор блюда</label>
+            <div class="radio-row" id="categoryRow">
+              <div class="card-option card-none" data-cat="sweet">
+                <strong>Сладкое утро</strong>
+                <img class="mini-capy" src="img/category/1.png" alt="">
+                <br/>
+                <span class="desc-food">Для дней, когда нужна энергия и комфорт</span>
+              </div>
+              <div class="card-option card-none" data-cat="light">
+                <strong>Полезное и легкое</strong>
+                <img class="mini-capy" src="img/category/2.png" alt="">
+                <br/>
+                <span class="desc-food">Лёгкий, но насыщенный вариант</span>
+              </div>
+              <div class="card-option card-none" data-cat="hearty">
+                <strong>Сытное и тёплое</strong>
+                <img class="mini-capy" src="img/category/3.png" alt="">
+                <br/>
+                <span class="desc-food">Когда нужно основательно подзарядиться</span>
+              </div>
+              <div class="card-option card-none" data-cat="fast">
+                <strong>Быстрое и удобное</strong>
+                <img class="mini-capy" src="img/category/4.png" alt="">
+                <br/>
+                <span class="desc-food">На случай, когда мало времени</span>
+              </div>
+            </div>
+
+            <div id="dishesList" style="margin-top:8px">
+              <!-- dishes will be injected here -->
+            </div>
+
+            <label for="note">Особые пожелания</label>
+            <textarea id="noteField" rows="3" placeholder="Напиши что-нибудь милое или укажи детали... Капибара всё поймет :)"></textarea>
+
+            <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+              <button type="submit" class="btn">Отправить капибаре на кухню!</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="preview">
+          <h4>Превью заказа</h4>
+          <div id="previewName">Имя: <strong>—</strong></div>
+          <div id="previewDate">Дата: <strong>—</strong></div>
+          <div id="previewDish">Блюдо: <strong>—</strong></div>
+          <div id="previewNote" class="muted" style="margin-top:8px">Особые пожелания: —</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPY-ASTRO -->
+    <section class="astro">
+      <div class="astro-card">
+        <h2>Твой личный капи-астролог</h2>
+        <p>Каждое утро — маленькая мысль от капибары. Вот что сегодня она думает:</p>
+        <div class="quote" id="astroQuote">"Пусть в кружке будет немного больше карамели, чем нужно — для храбрости."</div>
+      </div>
+      <div class="astro-card" style="display:flex;align-items:center;justify-content:center;flex-direction:column">
+        <!-- big capy illustration repeated for style -->
+        <img class="capy-shef capy-wave" src="img/capy-astro.png" alt="Капи Астролог">
+        <button class="btn" id="newQuote" style="margin-top:12px">Дай новую подсказку</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+    <footer>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+        <div aria-hidden="true">
+          <!-- sleeping capybara svg -->
+          <img class="mini-capy" src="img/capy-sleep.png" alt="Она спит...">
+        </div>
+        <div style="max-width:560px">
+          <p style="margin:0">Сайт создан с любовью от Пинки для любимой крыски.<br/>Ни одна капибара не пострадала при создании завтраков. Они только попробовали.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Заказ принят!</h3>
+      <p>Капибара уже потирает лапки. Приятных снов!</p>
+      <div style="margin-top:12px">
+        <button class="btn" id="closeModal">Уютно</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <!--
+    Интеграция с реальным бэкендом:
+    - Для отправки email можно использовать Formspree (https://formspree.io): заменить submit handler на fetch POST
+    - Для отправки в Telegram используйте свой bot token и chat_id на сервере (не напрямую из браузера):
+      POST https://api.telegram.org/bot<token>/sendMessage { chat_id:..., text: ... }
+    - EmailJS позволяет отправлять письма прямо из клиента, но потребует регистрации и публичного ключа:
+      emailjs.send('service_id','template_id', payload).then(...)
+
+    В коде выше помечены места, где это можно подключить.
+  -->
+</body>
+</html>
